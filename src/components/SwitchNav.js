@@ -24,6 +24,18 @@ export default class SwitchNav extends React.Component {
     }
   }
 
+  getCloseBtn() {
+    return (
+      <Btn
+        key="close"
+        className="col-switch-btn"
+        onClick={() => this.props.onClose()}
+      >
+        &times;
+      </Btn>
+    )
+  }
+
   getGroups(blocks) {
     let groups = groupBy(blocks.filter(b => b.group), type => type.group)
     let items = []
@@ -58,6 +70,7 @@ export default class SwitchNav extends React.Component {
     return (
       <nav className="col-switch-nav" role="navigation">
         {sorted.map(s => s.component)}
+        {this.getCloseBtn()}
       </nav>
     )
   }

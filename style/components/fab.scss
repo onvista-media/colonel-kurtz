@@ -7,32 +7,31 @@
  * http://www.google.com/design/spec/components/buttons.html#buttons-floating-action-button
  */
 
-$col-fab-border         : 1px solid rgba(#000, 0.08) !default;
-$col-fab-color          : #fff !default;
+$col-fab-border         : 0 !default;
+$col-fab-color          :#000000 !default;
 $col-fab-radius         : 50% !default;
-$col-fab-size           : 36px !default;
+$col-fab-size           : 24px !default;
 $col-fab-secondary-size : 24px !default;
-$col-fab-shadow         : 0 1px 3px 0 rgba(#000, 0.37), inset 0 1px 0 rgba(#fff, 0.2), inset 0 -1px 0 rgba(#fff, 0.1) !default;
 $col-fab-transition     : 0.4s all !default;
-$col-fab-background     : $col-primary !default;
+$col-fab-background     : #efefef !default;
+$col-fab-hover-background     : #d5d5d5 !default;
+$col-fab-hover-shadow   : 0px 1px 5px 0px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 3px 1px -2px rgba(0, 0, 0, 0.1) !default;
 
 .col-btn-fab {
   background: $col-fab-background;
-  border-radius: $col-fab-radius;
+  box-shadow: $col-fab-hover-shadow;
   border: $col-fab-border;
-  box-shadow: $col-fab-shadow;
+  border-radius: 2px;
   color: $col-fab-color;
   display: block;
-  font-size: $col-fab-size * 0.5;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
   font-weight: 500;
-  line-height: 16px;
-  height: $col-fab-size;
   margin: 0 auto;
-  padding: (($col-fab-size - 16px) * 0.5) 0;
   position: relative;
-  text-shadow: 0 1px 1px rgba(#000, 0.2);
+  text-transform: uppercase;
   transition: $col-fab-transition;
-  width: $col-fab-size;
   z-index: 1;
 
   &:before {
@@ -60,6 +59,11 @@ $col-fab-background     : $col-primary !default;
       box-shadow: inset 0 0 3px rgba(#000, 0.4);
       transform: scale(0.9);
     }
+  }
+
+  &:hover {
+    background-color:  $col-fab-hover-background;
+    box-shadow: $col-fab-hover-shadow;
   }
 }
 

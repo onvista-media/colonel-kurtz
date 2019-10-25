@@ -6,7 +6,7 @@ const { destroy, move } = Actions
 export default [
   {
     id: 'moveBefore',
-    label: 'Move Up',
+    label: 'Hoch schieben',
     onClick(app, block) {
       app.push(move, [block, -1])
     },
@@ -16,7 +16,7 @@ export default [
   },
   {
     id: 'moveAfter',
-    label: 'Move Down',
+    label: 'Runter schieben',
     onClick(app, block) {
       app.push(move, [block, 1])
     },
@@ -26,7 +26,7 @@ export default [
   },
   {
     id: 'destroy',
-    label: 'Remove',
+    label: 'Löschen',
     onClick(app, block) {
       app.push(destroy, block.id)
     }

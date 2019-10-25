@@ -1,6 +1,7 @@
 import React from 'react'
 import DOM from 'react-dom'
 import Btn from './Button'
+import IconAdd from '@material-ui/icons/AddBox'
 
 const defaultProps = {
   label: 'Add block',
@@ -17,9 +18,14 @@ export default class ActionButton extends React.Component {
     let { className, disabled, label, onClick, symbol } = this.props
 
     return (
-      <Btn className={className} onClick={onClick} disabled={disabled}>
+      <Btn
+        className={className}
+        onClick={onClick}
+        disabled={disabled}
+        title={label}
+      >
         <span className="col-hidden">{label}</span>
-        <span aria-hidden="true">{symbol}</span>
+        <IconAdd />
       </Btn>
     )
   }

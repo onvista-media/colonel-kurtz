@@ -1,8 +1,9 @@
 import ActionButton from './ActionButton'
 import Actions from '../actions/blocks'
 import Blocks from '../stores/Blocks'
-import React from 'react'
+import React, { Fragment } from 'react'
 import SwitchNav from './SwitchNav'
+import Btn from './Button'
 import classNames from 'classnames'
 import typesForBlock from '../utils/typesForBlock'
 
@@ -32,7 +33,7 @@ export default class Switch extends React.Component {
       <ActionButton
         ref={el => (this.toggle = el)}
         disabled={this.hasMaxChildren()}
-        label="Open the block menu and create a block"
+        label="Block hinzufügen"
         onClick={this._onToggle.bind(this)}
       />
     )
@@ -44,11 +45,14 @@ export default class Switch extends React.Component {
     }
 
     return (
-      <SwitchNav
-        ref={el => (this.nav = el)}
-        blockTypes={blockTypes}
-        onAdd={this._onAdd.bind(this)}
-      />
+      <Fragment>
+        <SwitchNav
+          ref={el => (this.nav = el)}
+          blockTypes={blockTypes}
+          onAdd={this._onAdd.bind(this)}
+          onClose={this.close.bind(this)}
+        />
+      </Fragment>
     )
   }
 

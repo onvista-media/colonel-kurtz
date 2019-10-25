@@ -3,7 +3,9 @@
 'use strict'
 
 const rollup = require('rollup')
-const buble = require('rollup-plugin-buble')
+const resolve = require('rollup-plugin-node-resolve')
+const commonjs = require('rollup-plugin-commonjs')
+const babel = require('rollup-plugin-babel')
 const path = require('path')
 
 const options = {
@@ -63,14 +65,17 @@ async function build(config) {
     let bundle = await rollup.rollup({
       input: path.resolve(config.entry),
       plugins: [
-        buble({
-          objectAssign: 'Object.assign'
-        })
+        resolve(),
+        babel({
+          exclude: 'node_modules/**',
+          presets: ['@babel/env', '@babel/preset-react']
+        }),
+        commonjs(),
       ],
-      external: Object.keys(require('../package').dependencies).concat(
-        'react',
-        'react-dom'
-      )
+      external: ['react', 'react-dom'],
+      globals: {
+        react: 'React'
+      }
     })
 
     await bundle.write({

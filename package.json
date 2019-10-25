@@ -8,6 +8,7 @@
     "start": "webpack-dev-server --config example/webpack.config.js --mode development",
     "example": "webpack --config example/webpack.config.js --mode production",
     "release": "make release",
+    "prepare": "make build",
     "test": "jest",
     "test:cov": "jest --coverage",
     "lint": "eslint . --cache --cache-location=node_modules/ --ignore-path=.gitignore",

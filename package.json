@@ -3,7 +3,7 @@
   "version": "5.4.2",
   "private": true,
   "description": "A block editor",
-  "main": "src/Colonel.js",
+  "main": "build/colonel.js",
   "scripts": {
     "start": "webpack-dev-server --config example/webpack.config.js --mode development",
     "example": "webpack --config example/webpack.config.js --mode production",

@@ -42,21 +42,7 @@ export default class BlockMenu extends React.Component {
   }
 
   render() {
-    return (
-      <Animator
-        className="col-menu-wrapper"
-        transitionName="col-menu"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={200}
-      >
-        <Handle
-          key="handle"
-          ref={el => (this.handle = el)}
-          onClick={this.props.onOpen}
-        />
-        {this.getMenu()}
-      </Animator>
-    )
+    return this.getMenuItems()
   }
 }
 

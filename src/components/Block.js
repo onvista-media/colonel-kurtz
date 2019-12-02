@@ -4,6 +4,7 @@ import Animator from './Animator'
 import BlockMenu from './BlockMenu'
 import FallbackBlockType from '../models/FallbackBlockType'
 import Switch from './Switch'
+import Dropable from './Dropable'
 import respondsTo from '../utils/respondsTo'
 import { assign } from '../utils/data'
 
@@ -91,6 +92,8 @@ export default class Block extends React.PureComponent {
             onExit={this.closeMenu.bind(this)}
           />
         </div>
+
+        <Dropable />
 
         <Switch app={app} position={block} parent={block.parent} />
       </div>

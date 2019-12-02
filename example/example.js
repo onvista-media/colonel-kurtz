@@ -1,8 +1,3 @@
-/**
- * ColonelKurtz Example
- */
-
-import './example.scss'
 import ColonelKurtz from '../src/Colonel'
 import MediumBlock from '../addons/medium'
 import HtmlEmbedBlock from '../addons/html-embed'
@@ -12,17 +7,9 @@ import SectionBlock from './blockTypes/Section'
 
 const blockTypes = [
   {
-    id: 'section',
-    label: 'Section',
-    component: SectionBlock,
-    types: ['child-text', 'image', 'youtube'],
-    maxChildren: 3
-  },
-  {
     id: 'medium',
     label: 'Medium Editor',
-    component: MediumBlock,
-    group: 'Rich Text'
+    component: MediumBlock
   },
   {
     id: 'embed',
@@ -32,20 +19,12 @@ const blockTypes = [
   {
     id: 'child-text',
     label: 'Child Text',
-    component: MediumBlock,
-    root: false
+    component: MediumBlock
   },
   {
     id: 'image',
     label: 'Image',
-    group: 'Media',
     component: ImageBlock
-  },
-  {
-    id: 'youtube',
-    label: 'YouTube',
-    group: 'Media',
-    component: YouTubeBlock
   }
 ]
 

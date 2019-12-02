@@ -82,6 +82,7 @@
     "group-by": "0.0.1",
     "microcosm": "~9.21",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-dnd": "^9.5.1",
     "react-focus-trap": "~2.5.0",
     "react-ink": "~6.3.0",
     "react-transition-group": "1.2.0"

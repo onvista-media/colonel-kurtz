@@ -1,5 +1,7 @@
 import Button from './Button'
 import React from 'react'
+import { DragSource } from 'react-dnd'
+import ItemTypes from '../config/dndTypes'
 
 const defaultProps = {
   className: 'col-menu-item',
@@ -8,7 +10,7 @@ const defaultProps = {
   isDisabled() {}
 }
 
-export default class MenuItem extends React.Component {
+class MenuItem extends React.Component {
   isDisabled() {
     let { app, block, isDisabled } = this.props
     return isDisabled(app, block)
@@ -24,12 +26,16 @@ export default class MenuItem extends React.Component {
       active,
       isDisabled,
       items,
+      isDragging, 
+      connectDragSource,
       ...safe
     } = this.props
-
+    const opacity = isDragging ? 0.4 : 1
     return (
       <Button
         {...safe}
+        ref={connectDragSource}
+        style={{ opacity }}
         onClick={this._onClick.bind(this)}
         disabled={this.isDisabled()}
       >
@@ -52,5 +58,23 @@ export default class MenuItem extends React.Component {
     onClick(app, block, this)
   }
 }
+
+export default DragSource(
+  ItemTypes.BOX,
+  {
+    beginDrag: props => ({ name: props.name }),
+    endDrag(props, monitor) {
+      const item = monitor.getItem()
+      const dropResult = monitor.getDropResult()
+      if (dropResult) {
+        alert(`You dropped ${item.name} into ${dropResult.name}!`)
+      }
+    },
+  },
+  (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging(),
+  }),
+)(MenuItem)
 
 MenuItem.defaultProps = defaultProps

@@ -22,7 +22,7 @@ export default class Switch extends React.Component {
 
   close() {
     this.setState({ open: false }, () => {
-      this.toggle.focus()
+      //this.toggle.focus()
     })
   }
 
@@ -40,9 +40,11 @@ export default class Switch extends React.Component {
   }
 
   getNav(blockTypes) {
+    /*
     if (!this.state.open) {
       return null
     }
+    */
 
     return (
       <Fragment>
@@ -93,7 +95,7 @@ export default class Switch extends React.Component {
 
     return types.length ? (
       <div className={className} onKeyUp={this._onKeyUp.bind(this)}>
-        {this.getToggle()}
+        {/*this.getToggle()*/}
         {this.getNav(types)}
       </div>
     ) : null

@@ -8,9 +8,9 @@ const DropableArea = ({ canDrop, isOver, connectDropTarget }) => {
   const isActive = canDrop && isOver
   let backgroundColor = '#fff'
   if (isActive) {
-    backgroundColor = '#eee'
+    backgroundColor = '#a51890'
   } else if (canDrop) {
-    backgroundColor = '#f6f6f6'
+    backgroundColor = '#eee'
   }
   return (
     <div ref={connectDropTarget} style={{ ...style, backgroundColor }}></div>

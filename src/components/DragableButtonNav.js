@@ -4,8 +4,10 @@ import Actions from '../actions/blocks'
 import typesForBlock from '../utils/typesForBlock'
 
 export default class DragableButtonNav extends React.Component {
-  onAdd = app => (id, position) => {
-    app.push(Actions.create, [id, position])
+  onAdd(app) {
+    return (id, position) => {
+      app.push(Actions.create, [id, position])
+    }
   }
 
   render() {

@@ -11,7 +11,7 @@ import { Button } from '@material-ui/core'
 const deleteAreaStyle = {
   display: 'inline-block',
   float: 'right',
-  padding: '7px 0 3px 0',
+  padding: '3px',
 }
 
 class DragableButtonNav extends React.Component {

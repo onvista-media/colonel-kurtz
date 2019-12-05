@@ -10,13 +10,17 @@ import { assign } from '../utils/data'
 import DropableArea from './DropableArea'
 
 const handleStyle = {
-  backgroundColor: '#ddd',
-  width: '1rem',
-  height: '1rem',
-  display: 'inline-block',
-  float: 'left',
+  position: 'absolute',
+  color: '#727272',
   cursor: 'move',
-  overflow: 'hidden'
+  background: '#F1F1F1',
+  borderTopLeftRadius: '2px',
+  borderTopRightRadius: '2px',
+  top: '-16px',
+  padding: '2px 5px 1px 5px',
+  fontSize: '11px',
+  textTransform: 'uppercase',
+  zIndex: 1
 }
 
 class Block extends React.PureComponent {

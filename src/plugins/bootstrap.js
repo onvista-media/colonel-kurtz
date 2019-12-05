@@ -24,7 +24,7 @@ export default {
 
   register(
     app,
-    { allow, maxChildren = Infinity, blocks, blockTypes, maxDepth = Infinity },
+    { allow, maxChildren = Infinity, blocks, blockTypes, label = 'Bausteine', maxDepth = Infinity },
     next
   ) {
     if (blocks instanceof HTMLElement) {
@@ -36,6 +36,7 @@ export default {
         maxChildren,
         maxDepth,
         blocks,
+        label,
         blockTypes: this.filter(blockTypes, allow)
       },
       next

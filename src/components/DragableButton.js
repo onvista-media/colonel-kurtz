@@ -1,24 +1,29 @@
 import React from 'react'
 import { DragSource } from 'react-dnd'
+import { Button } from '@material-ui/core'
 const style = {
-  border: '1px dashed gray',
-  backgroundColor: 'white',
   padding: '0.5rem 1rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
+  marginRight: '0.5rem',
   cursor: 'move',
   float: 'left'
 }
-const DragableButton = ({ name, isDragging, connectDragSource, onAdd, id }) => {
+const DragableButton = ({
+  icon,
+  name,
+  isDragging,
+  connectDragSource,
+  onAdd,
+  id
+}) => {
   const opacity = isDragging ? 0.4 : 1
   return (
-    <div
+    <Button variant="contained" size="medium"
       ref={connectDragSource}
       style={{ ...style, opacity }}
       onClick={() => onAdd(id)}
     >
-      {name}
-    </div>
+      {icon || name}
+    </Button>
   )
 }
 export default DragSource(
@@ -31,7 +36,7 @@ export default DragSource(
       const item = monitor.getItem()
       const { id, onAdd } = item
       const dropResult = monitor.getDropResult()
-      if (dropResult) {
+      if (dropResult && !dropResult.destroy) {
         onAdd(id, dropResult.position)
       }
     }

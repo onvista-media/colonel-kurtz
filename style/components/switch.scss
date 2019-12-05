@@ -3,14 +3,14 @@
  * Switch allows users to create new blocks
  */
 
-$col-switch-animation   : 0.3s col-switch cubic-bezier(.89,.03,.42,1.23) !default;
-$col-switch-background  : #fff !default;
-$col-switch-shadow      : 0 1px 3px rgba(#000, 0.4) !default;
-$col-switch-btn-padding : 6px unit(2) !default;
-$col-switch-btn-width   : unit(11) !default;
-$col-switch-btn-border  : rgba(#000, 0.15) !default;
-$col-switch-nav-radius  : 3px !default;
-$col-switch-padding     : unit(2) 0 !default;
+$col-switch-animation: 0.3s col-switch cubic-bezier(0.89, 0.03, 0.42, 1.23) !default;
+$col-switch-background: #fff !default;
+$col-switch-shadow: none;
+$col-switch-btn-padding: 6px unit(2) !default;
+$col-switch-btn-width: unit(11) !default;
+$col-switch-btn-border: rgba(#000, 0.15) !default;
+$col-switch-nav-radius: 0;
+$col-switch-padding: unit(2) 0 !default;
 
 .col-switch {
   text-align: center;
@@ -66,10 +66,9 @@ $col-switch-padding     : unit(2) 0 !default;
   border-radius: $col-switch-nav-radius;
   box-shadow: $col-switch-shadow;
   display: inline-block;
-  height: 28px;
+  width: 100%;
 }
 
 .col-switch .col-btn-fab {
   animation: $col-switch-animation;
 }
-

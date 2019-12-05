@@ -143,18 +143,21 @@ export default DragSource(
     endDrag(props, monitor) {
       const item = monitor.getItem()
       const dropResult = monitor.getDropResult()
-
       if (dropResult) {
-        const { position, app } = dropResult
-        const fromPosition = app.state.blocks.indexOf(item.block)
-        let toPosition = 0
-        if (position) {
-          toPosition = app.state.blocks.indexOf(position)
-          if (fromPosition > toPosition) toPosition += 1
-        }
+        const { destroy, position, app } = dropResult
+        if (destroy) {
+          app.push(Actions.destroy, item.block.id)
+        } else {
+          const fromPosition = app.state.blocks.indexOf(item.block)
+          let toPosition = 0
+          if (position) {
+            toPosition = app.state.blocks.indexOf(position)
+            if (fromPosition > toPosition) toPosition += 1
+          }
 
-        const distance = toPosition - fromPosition
-        app.push(Actions.move, [item.block, distance])
+          const distance = toPosition - fromPosition
+          app.push(Actions.move, [item.block, distance])
+        }
       }
     }
   },

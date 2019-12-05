@@ -13,8 +13,14 @@ $col-block-width      : $col-medium !default;
   background: $col-block-background;
   border: 1px solid #F1F1F1;
   border-radius: $col-block-radius;
-  margin: 20x auto 0 auto;
+  margin: 20px auto 0 auto;
   max-width: $col-block-width;
   position: relative;
   text-align: left;
+}
+
+.col-block-dropable {
+  position: absolute;
+  height: 20px;
+  width: 100%;
 }

@@ -5,7 +5,7 @@ const style = {
   padding: '0.3rem 0.75rem',
   marginRight: '0.5rem',
   cursor: 'move',
-  float: 'left',
+  display: 'inline-block',
   fontSize: '0.8rem'
 }
 const DragableButton = ({
@@ -18,7 +18,9 @@ const DragableButton = ({
 }) => {
   const opacity = isDragging ? 0.4 : 1
   return (
-    <Button variant="contained" size="small"
+    <Button
+      variant="contained"
+      size="small"
       ref={connectDragSource}
       style={{ ...style, opacity }}
       onClick={() => onAdd(id)}

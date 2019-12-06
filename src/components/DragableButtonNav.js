@@ -11,7 +11,7 @@ import { Button } from '@material-ui/core'
 const deleteAreaStyle = {
   display: 'inline-block',
   float: 'right',
-  padding: '3px',
+  padding: '3px'
 }
 
 class DragableButtonNav extends React.Component {
@@ -33,18 +33,22 @@ class DragableButtonNav extends React.Component {
     }
     return (
       <nav className="col-switch-nav" role="navigation">
-        {types.map((block, id) => (
-          <DragableButton
-            id={block.id}
-            key={id}
-            icon={block.icon}
-            name={block.label}
-            onAdd={(id, position) => this.onAdd(app)(id, position)}
-          />
-        ))}
+        {app.label && <h6 className="col-switch-nav__label">{app.label}</h6>}
+        <div className="col-switch-nav__controls">
+          {types.map((block, id) => (
+            <DragableButton
+              id={block.id}
+              key={id}
+              icon={block.icon}
+              name={block.label}
+              onAdd={(id, position) => this.onAdd(app)(id, position)}
+            />
+          ))}
+        </div>
         <Button
           ref={connectDropTarget}
           disabled={!canDrop}
+          className="col-switch-nav__delete"
           style={{ ...deleteAreaStyle, color }}
         >
           {deleteAreaIsActive ? <Delete /> : <DeleteOutline />}

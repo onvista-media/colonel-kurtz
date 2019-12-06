@@ -65,7 +65,8 @@ $col-switch-padding: unit(2) 0 !default;
   background: $col-switch-background;
   border-radius: $col-switch-nav-radius;
   box-shadow: $col-switch-shadow;
-  display: inline-block;
+  display: block;
+  text-align: left;
   width: 100%;
 }
 

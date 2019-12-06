@@ -17,7 +17,7 @@ const deleteAreaStyle = {
 class DragableButtonNav extends React.Component {
   onAdd(app) {
     return (id, position) => {
-      app.push(Actions.create, [id, position])
+      app.push(Actions.create, [id, position || app.state.blocks.length])
     }
   }
 

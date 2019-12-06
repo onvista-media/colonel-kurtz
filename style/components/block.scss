@@ -20,7 +20,7 @@ $col-block-width      : $col-medium !default;
 }
 
 .col-block-dropable {
-  position: absolute;
-  height: 20px;
+  position: relative;
+  height: 16px;
   width: 100%;
 }

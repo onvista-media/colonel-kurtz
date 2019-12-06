@@ -26,9 +26,9 @@ export default class App extends React.Component {
       <div className="colonel">
         <DndProvider backend={HTML5Backend}>
           <DropableArea app={app} />
-          <Animator className="col-block-children">
+          <div className="col-block-children">
             {parents.map(this.getBlock, this)}
-          </Animator>
+          </div>
           <DragableButtonNav app={app} />
         </DndProvider>
       </div>

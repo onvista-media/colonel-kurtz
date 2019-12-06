@@ -1,13 +1,7 @@
 import React from 'react'
 import { DragSource } from 'react-dnd'
 import { Button } from '@material-ui/core'
-const style = {
-  padding: '0.3rem 0.75rem',
-  marginRight: '0.5rem',
-  cursor: 'move',
-  display: 'inline-block',
-  fontSize: '0.8rem'
-}
+
 const DragableButton = ({
   icon,
   name,
@@ -19,10 +13,10 @@ const DragableButton = ({
   const opacity = isDragging ? 0.4 : 1
   return (
     <Button
-      variant="contained"
       size="small"
+      className="col-switch-nav__button"
       ref={connectDragSource}
-      style={{ ...style, opacity }}
+      style={{ opacity }}
       onClick={() => onAdd(id)}
     >
       {icon || name}

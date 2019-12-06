@@ -9,10 +9,6 @@ import respondsTo from '../utils/respondsTo'
 import { assign } from '../utils/data'
 import DropableArea from './DropableArea'
 
-const handleStyle = {
-  
-}
-
 class Block extends React.PureComponent {
   constructor() {
     super(...arguments)
@@ -70,7 +66,6 @@ class Block extends React.PureComponent {
       app,
       block,
       children,
-      isDragging,
       connectDragSource,
       connectDragPreview
     } = this.props
@@ -85,9 +80,7 @@ class Block extends React.PureComponent {
       <div className="col-editor-block">
         <div className={`col-block col-block-${block.type}`}>
           {connectDragSource(
-            <div className="col-block-handle" style={handleStyle}>
-              {icon || label}
-            </div>
+            <div className="col-block-handle">{icon || label}</div>
           )}
           <Component
             ref={el => (this.block = el)}

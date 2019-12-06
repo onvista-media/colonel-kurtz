@@ -25,11 +25,11 @@ export default class App extends React.Component {
     return (
       <div className="colonel">
         <DndProvider backend={HTML5Backend}>
-          <DragableButtonNav app={app} />
           <DropableArea app={app} />
           <Animator className="col-block-children">
             {parents.map(this.getBlock, this)}
           </Animator>
+          <DragableButtonNav app={app} />
         </DndProvider>
       </div>
     )

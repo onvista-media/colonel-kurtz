@@ -3,7 +3,6 @@ import Actions from '../actions/blocks'
 import Blocks from '../stores/Blocks'
 import React, { Fragment } from 'react'
 import SwitchNav from './SwitchNav'
-import Btn from './Button'
 import classNames from 'classnames'
 import typesForBlock from '../utils/typesForBlock'
 
@@ -22,7 +21,7 @@ export default class Switch extends React.Component {
 
   close() {
     this.setState({ open: false }, () => {
-      //this.toggle.focus()
+      this.toggle.focus()
     })
   }
 
@@ -40,11 +39,9 @@ export default class Switch extends React.Component {
   }
 
   getNav(blockTypes) {
-    /*
     if (!this.state.open) {
       return null
     }
-    */
 
     return (
       <Fragment>

@@ -24,3 +24,17 @@ $col-block-width      : $col-medium !default;
   height: 16px;
   width: 100%;
 }
+
+.col-block-handle {
+  position: absolute;
+  color: #727272;
+  cursor: move;
+  background: #F1F1F1;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  top: -16px;
+  padding: 2px 5px 1px 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  z-index: 1;
+}

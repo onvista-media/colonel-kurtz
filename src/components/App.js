@@ -4,10 +4,13 @@
  */
 
 import React from 'react'
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import Animator from './Animator'
 import Blocks from '../stores/Blocks'
 import EditorBlock from './EditorBlock'
-import Switch from './Switch'
+import DragableButtonNav from './DragableButtonNav'
+import DropableArea from './DropableArea'
 
 export default class App extends React.Component {
   getBlock(block, i) {
@@ -21,10 +24,13 @@ export default class App extends React.Component {
 
     return (
       <div className="colonel">
-        <Switch app={app} />
-        <Animator className="col-block-children">
-          {parents.map(this.getBlock, this)}
-        </Animator>
+        <DndProvider backend={HTML5Backend}>
+          <DropableArea app={app} />
+          <div className="col-block-children">
+            {parents.map(this.getBlock, this)}
+          </div>
+          <DragableButtonNav app={app} />
+        </DndProvider>
       </div>
     )
   }

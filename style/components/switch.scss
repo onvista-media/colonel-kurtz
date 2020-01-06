@@ -3,14 +3,14 @@
  * Switch allows users to create new blocks
  */
 
-$col-switch-animation   : 0.3s col-switch cubic-bezier(.89,.03,.42,1.23) !default;
-$col-switch-background  : #fff !default;
-$col-switch-shadow      : 0 1px 3px rgba(#000, 0.4) !default;
-$col-switch-btn-padding : 6px unit(2) !default;
-$col-switch-btn-width   : unit(11) !default;
-$col-switch-btn-border  : rgba(#000, 0.15) !default;
-$col-switch-nav-radius  : 3px !default;
-$col-switch-padding     : unit(2) 0 !default;
+$col-switch-animation: 0.3s col-switch cubic-bezier(0.89, 0.03, 0.42, 1.23) !default;
+$col-switch-background: #fff !default;
+$col-switch-shadow: none;
+$col-switch-btn-padding: 6px unit(2) !default;
+$col-switch-btn-width: unit(11) !default;
+$col-switch-btn-border: rgba(#000, 0.15) !default;
+$col-switch-nav-radius: 2px;
+$col-switch-padding: unit(2) 0 !default;
 
 .col-switch {
   text-align: center;
@@ -61,15 +61,46 @@ $col-switch-padding     : unit(2) 0 !default;
 }
 
 .col-switch-nav {
-  animation: $col-switch-animation;
-  background: $col-switch-background;
+  padding: 8px;
   border-radius: $col-switch-nav-radius;
-  box-shadow: $col-switch-shadow;
+  background: #f5f5f5;
+  position: sticky;
+  bottom: 0px;
+  z-index: 1;
+  display: block;
+  text-align: left;
+  width: 100%;
+
+  &:after {
+    content: '.';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+  }
+
+  button {
+    background: #fff;
+  }
+}
+
+.col-switch-nav__controls {
+  float: left;
+}
+
+.col-switch-nav__button {
+  border: 1px solid white;
+  padding: 8px;
+  margin-right: 0.5rem;
+  cursor: move;
   display: inline-block;
-  height: 28px;
+  font-size: 0.8rem;
+
+  &:hover {
+    border: 1px dashed #333;
+  }
 }
 
 .col-switch .col-btn-fab {
   animation: $col-switch-animation;
 }
-

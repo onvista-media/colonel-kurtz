@@ -3,7 +3,6 @@ import Actions from '../actions/blocks'
 import Blocks from '../stores/Blocks'
 import React, { Fragment } from 'react'
 import SwitchNav from './SwitchNav'
-import Btn from './Button'
 import classNames from 'classnames'
 import typesForBlock from '../utils/typesForBlock'
 
@@ -93,7 +92,7 @@ export default class Switch extends React.Component {
 
     return types.length ? (
       <div className={className} onKeyUp={this._onKeyUp.bind(this)}>
-        {this.getToggle()}
+        {/*this.getToggle()*/}
         {this.getNav(types)}
       </div>
     ) : null

@@ -1,4 +1,5 @@
 import React from 'react'
+import { DragSource } from 'react-dnd'
 import Actions from '../actions/blocks'
 import Animator from './Animator'
 import BlockMenu from './BlockMenu'
@@ -6,8 +7,9 @@ import FallbackBlockType from '../models/FallbackBlockType'
 import Switch from './Switch'
 import respondsTo from '../utils/respondsTo'
 import { assign } from '../utils/data'
+import DropableArea from './DropableArea'
 
-export default class Block extends React.PureComponent {
+class Block extends React.PureComponent {
   constructor() {
     super(...arguments)
 
@@ -60,17 +62,26 @@ export default class Block extends React.PureComponent {
   }
 
   render() {
-    let { app, block, children } = this.props
-    let { component: Component } = this.getBlockType()
-    let { menuOpen, extraMenuItems } = this.state
+    const {
+      app,
+      block,
+      children,
+      connectDragSource,
+      connectDragPreview
+    } = this.props
+    const { component: Component, icon, label } = this.getBlockType()
+    const { menuOpen, extraMenuItems } = this.state
 
     // Determine content by taking the default content and extend it with
     // the current block content
-    let content = this.getContent(block)
+    const content = this.getContent(block)
 
-    return (
+    return connectDragPreview(
       <div className="col-editor-block">
         <div className={`col-block col-block-${block.type}`}>
+          {connectDragSource(
+            <div className="col-block-handle">{icon || label}</div>
+          )}
           <Component
             ref={el => (this.block = el)}
             {...block}
@@ -93,8 +104,7 @@ export default class Block extends React.PureComponent {
             onExit={this.closeMenu.bind(this)}
           />
         </div>
-
-        <Switch app={app} position={block} parent={block.parent} />
+        <DropableArea app={app} position={block} parent={block.parent} />
       </div>
     )
   }
@@ -122,3 +132,37 @@ export default class Block extends React.PureComponent {
     }
   }
 }
+
+export default DragSource(
+  'BLOCK',
+  {
+    beginDrag: props => {
+      return props
+    },
+    endDrag(props, monitor) {
+      const item = monitor.getItem()
+      const dropResult = monitor.getDropResult()
+      if (dropResult) {
+        const { destroy, position, app } = dropResult
+        if (destroy) {
+          app.push(Actions.destroy, item.block.id)
+        } else {
+          const fromPosition = app.state.blocks.indexOf(item.block)
+          let toPosition = 0
+          if (position) {
+            toPosition = app.state.blocks.indexOf(position)
+            if (fromPosition > toPosition) toPosition += 1
+          }
+
+          const distance = toPosition - fromPosition
+          app.push(Actions.move, [item.block, distance])
+        }
+      }
+    }
+  },
+  (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging()
+  })
+)(Block)

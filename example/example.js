@@ -52,6 +52,14 @@ const blockTypes = [
 let editor = new ColonelKurtz({
   el: document.getElementById('app'),
   blockTypes: blockTypes,
+  blocks: [
+    {
+      type: 'medium',
+      content: {
+        html: 'foobar'
+      }
+    }
+  ],
   maxChildren: 5,
   maxDepth: 3
 })

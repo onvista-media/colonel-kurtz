@@ -70,7 +70,7 @@ const Blocks = {
     return jsonToBlocks(state)
   },
 
-  create(state, { type, parent, position }) {
+  create(state, { type, parent, position, content }) {
     let record = new Block({ clientOnly: true, parent, type })
 
     // If the provided position is a Block, place the new block right
@@ -79,6 +79,10 @@ const Blocks = {
       position = state.indexOf(position) + 1
     }
 
+    if (content) {
+      record.content = assign({}, record.content, content)
+    }
+    
     return insertAt(state, record, position || 0)
   },
 

@@ -1,6 +1,6 @@
 export default {
-  create(type, position, parent) {
-    return { type, position, parent }
+  create(type, position, parent, content) {
+    return { type, position, parent, content }
   },
 
   destroy(id) {

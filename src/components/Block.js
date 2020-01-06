@@ -75,6 +75,8 @@ export default class Block extends React.PureComponent {
             ref={el => (this.block = el)}
             {...block}
             content={content}
+            addBlock={this.addBlock.bind(this)}
+            deleteBlock={this.deleteBlock.bind(this)}
             onChange={this._onChange.bind(this)}
           >
             <Switch app={app} parent={block} />
@@ -95,6 +97,16 @@ export default class Block extends React.PureComponent {
         <Switch app={app} position={block} parent={block.parent} />
       </div>
     )
+  }
+
+  addBlock(type, content) {
+    const { app, block } = this.props
+    app.push(Actions.create, [type, block, null, content])
+  }
+
+  deleteBlock() {
+    const { app, block } = this.props
+    app.push(Actions.destroy, [block])
   }
 
   _onChange(keypath, value) {

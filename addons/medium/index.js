@@ -37,10 +37,12 @@ export default class MediumBlock extends React.Component {
 
   componentDidMount() {
     this.editor = new MediumEditor(this.container, this.props.options)
+    this.container.addEventListener('paste', this._onPaste.bind(this))
   }
 
   componentWillUnmount() {
     this.editor.deactivate()
+    this.container.removeEventListener('paste', this._onPaste.bind(this))
   }
 
   render() {
@@ -57,6 +59,20 @@ export default class MediumBlock extends React.Component {
         {this.props.children}
       </div>
     )
+  }
+
+  _onPaste(e) {
+    const pastedText = e && e.clipboardData.getData('Text')
+    if (pastedText) {
+      pastedText
+        .split(/\n\n/)
+        .filter(text => text !== '')
+        .reverse()
+        .forEach(paragraph => {
+          this.props.addBlock('medium', { html: paragraph, text: paragraph })
+        })
+      this.props.deleteBlock()
+    }
   }
 
   _onBlur() {
